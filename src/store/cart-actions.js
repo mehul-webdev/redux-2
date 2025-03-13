@@ -57,46 +57,46 @@ export const sendCartData = (cart) => {
 };
 
 // Method 1: To create thunk
-export const fetchCartData = () => {
-  return async (dispatch) => {
-    const fetchData = async () => {
-      const response = await fetch(
-        "https://redux-learning-7d24d-default-rtdb.firebaseio.com/cart.json"
-      );
+// export const fetchCartData = () => {
+//   return async (dispatch) => {
+//     const fetchData = async () => {
+//       const response = await fetch(
+//         "https://redux-learning-7d24d-default-rtdb.firebaseio.com/cart.json"
+//       );
 
-      if (!response.ok) {
-        throw new Error("Failed to fetch cart data");
-      }
+//       if (!response.ok) {
+//         throw new Error("Failed to fetch cart data");
+//       }
 
-      const data = response.json();
+//       const data = response.json();
 
-      return data;
-    };
+//       return data;
+//     };
 
-    try {
-      const cartData = await fetchData();
-      dispatch(
-        cartActions.replaceCart({
-          items: cartData.items || [],
-          totalQuantity: cartData.totalQuantity,
-        })
-      );
-    } catch (e) {
-      dispatch(
-        uiActions.showNotification({
-          status: "error",
-          title: "Error!",
-          message: "Error while sending data",
-        })
-      );
-    }
-  };
-};
+//     try {
+//       const cartData = await fetchData();
+//       dispatch(
+//         cartActions.replaceCart({
+//           items: cartData.items || [],
+//           totalQuantity: cartData.totalQuantity,
+//         })
+//       );
+//     } catch (e) {
+//       dispatch(
+//         uiActions.showNotification({
+//           status: "error",
+//           title: "Error!",
+//           message: "Error while sending data",
+//         })
+//       );
+//     }
+//   };
+// };
 
 // Method 2
 
 export const fetchCartData = createAsyncThunk(
-  "cart/fetchCartData",
+  "cart/fetchCartData", // sliceName/thunkname
   async (_, { dispatch }) => {
     try {
       const fetchData = async () => {
