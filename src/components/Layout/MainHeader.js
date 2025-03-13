@@ -1,5 +1,5 @@
-import CartButton from '../Cart/CartButton';
-import classes from './MainHeader.module.css';
+import CartButton from "../Cart/CartButton";
+import classes from "./MainHeader.module.css";
 
 const MainHeader = (props) => {
   return (
@@ -8,7 +8,7 @@ const MainHeader = (props) => {
       <nav>
         <ul>
           <li>
-            <CartButton />
+            <CartButton on />
           </li>
         </ul>
       </nav>
